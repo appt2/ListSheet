@@ -1,46 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:clickable="true"
-    android:orientation="vertical"
-    
->
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:gravity="center_vertical"
+     android:orientation="horizontal"
+     android:id="@+id/root">
 
-    <LinearLayout
-        
-       android:id="@+id/root"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        
-    >
+    <ImageView
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:scaleType="centerInside"
+         android:id="@+id/icon" />
 
-        <ImageView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:scaleType="centerInside"
-            android:id="@+id/icon"
-            
-        />
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="1dp"
-            android:textColor="#ffffffff"
-            android:id="@+id/name"
-            android:text="TextView"
-            
-        />
-
-    </LinearLayout>
+    <TextView
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:textSize="16sp"
+         android:layout_marginLeft="2dp"
+         android:layout_marginRight="1dp"
+         android:textColor="#ffffffff"
+         android:id="@+id/name"
+         android:text="TextView" />
 
 </LinearLayout>

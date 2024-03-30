@@ -16,11 +16,9 @@ import java.util.List;
 
 public class ListAdapter extends BaseAdapter implements Adapter {
   protected List<SheetModel> model;
-  protected OnItemClickEvent ev;
-
-  public ListAdapter(List<SheetModel> model, OnItemClickEvent ev) {
+  public ListAdapter(List<SheetModel> model) {
     this.model = model;
-    this.ev = ev;
+    
   }
 
   @Override
@@ -51,11 +49,6 @@ public class ListAdapter extends BaseAdapter implements Adapter {
     img.setImageResource(sheet.getIcon());
     tv.setText(sheet.getName());
     root.setEnabled(sheet.getIsItem() ? true : false);
-    root.setOnClickListener(
-        __ -> {
-          ev.onClickItem(__, pos, sheet.getIsItem());
-        });
-
     return views;
   }
 }
