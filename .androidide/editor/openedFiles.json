@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/AndroidManifest.xml",
+      "selection": {
+        "end": {
+          "column": 40,
+          "index": 297,
+          "line": 8
+        },
+        "start": {
+          "column": 40,
+          "index": 297,
+          "line": 8
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/java/com/ninjacoder/listshset/MainActivity.java",
+      "selection": {
+        "end": {
+          "column": 28,
+          "index": 1588,
+          "line": 45
+        },
+        "start": {
+          "column": 28,
+          "index": 1588,
+          "line": 45
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/java/com/ninjacoder/listshset/MainActivity.java"
+}
