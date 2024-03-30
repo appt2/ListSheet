@@ -48,7 +48,8 @@ public class ListAdapter extends BaseAdapter implements Adapter {
     }
     img.setImageResource(sheet.getIcon());
     tv.setText(sheet.getName());
-    root.setEnabled(sheet.getIsItem() ? true : false);
+    root.setEnabled(!sheet.getIsItem());
+    root.setAlpha(!sheet.getIsItem() ? 0.4f : 1f);
     return views;
   }
 }

@@ -7,6 +7,9 @@ public class SheetModel {
   @NonNull private String name;
   @NonNull private int icon;
   @NonNull private boolean isItem;
+  
+  
+  public SheetModel(){}
 
   public SheetModel(String name, int icon, boolean isItem) {
     this.name = name;

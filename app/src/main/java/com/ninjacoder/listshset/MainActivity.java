@@ -17,9 +17,8 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     ItemRuner runer = new ItemRuner(this);
-    for(int i = 0; i < 400; ++i) {
     	runer.addItem("Hello",R.drawable.ic_launcher_foreground);
-    }
+      runer.addItem("Hello",R.drawable.ic_launcher_foreground,false);
     
     runer.setCallBack((pos) ->{
       runer.setDismiss();

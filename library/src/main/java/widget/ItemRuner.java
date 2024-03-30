@@ -20,11 +20,12 @@ public class ItemRuner {
   protected ListView listview;
   protected List<SheetModel> list = new ArrayList<>();
   protected BottomSheetDialog dialog;
+  protected SheetModel model;
   protected ListAdapter ad;
 
   public ItemRuner(Context context) {
     this.context = context;
-    var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main,null);
+    var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
     TextView title = view.findViewById(R.id.title);
     listview = view.findViewById(R.id.listdata);
     listview.setScrollBarSize(0);
@@ -44,10 +45,11 @@ public class ItemRuner {
   }
 
   public void setCallBack(OnItemClickEvent ev) {
-        if (ev != null) {
+    if (ev != null) {
       listview.setOnItemClickListener(
           (adview, view, pos, lb) -> {
-            ev.onClickItem(pos);
+            boolean items = list.get(pos).getIsItem();
+            if (items) ev.onClickItem(pos);
           });
     }
   }
