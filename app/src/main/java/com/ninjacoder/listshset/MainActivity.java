@@ -1,5 +1,6 @@
 package com.ninjacoder.listshset;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
     runer.setCallBack((pos) ->{
       runer.setDismiss();
     });
-    
+    runer.setTextColors(Color.CYAN);
+    runer.setColorFilter(Color.CYAN);
+    runer.serDivarColor(Color.BLUE);
+    runer.setTitleColor(Color.CYAN);
+    runer.setTitle("Hello");
+    runer.setSheetBackground(Color.BLACK);
     runer.show();
     
     

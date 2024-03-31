@@ -10,7 +10,9 @@
     <LinearLayout
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
-         android:orientation="vertical">
+         android:paddingVertical="2dp"
+         android:orientation="vertical"
+         android:paddingHorizontal="2dp">
 
         <LinearLayout
              android:layout_height="wrap_content"
@@ -31,7 +33,7 @@
             <com.google.android.material.divider.MaterialDivider
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
-                 android:orientation="horizontal"
+                 android:paddingVertical="2dp"
                  android:id="@+id/diver" />
 
         </LinearLayout>

@@ -10,8 +10,8 @@
      android:id="@+id/root">
 
     <ImageView
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
+         android:layout_height="60dp"
+         android:layout_width="60dp"
          android:scaleType="centerInside"
          android:id="@+id/icon" />
 
@@ -19,8 +19,7 @@
          android:layout_height="wrap_content"
          android:layout_width="wrap_content"
          android:textSize="16sp"
-         android:layout_marginLeft="2dp"
-         android:layout_marginRight="1dp"
+         android:layout_marginRight="4dp"
          android:textColor="#ffffffff"
          android:id="@+id/name"
          android:text="TextView" />

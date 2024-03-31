@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.IdRes;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.divider.MaterialDivider;
 import com.ninjacoder.listshset.library.R;
 import com.ninjacoder.listshset.library.adapter.ListAdapter;
 import com.ninjacoder.listshset.library.interfaces.OnItemClickEvent;
@@ -22,12 +23,15 @@ public class ItemRuner {
   protected BottomSheetDialog dialog;
   protected SheetModel model;
   protected ListAdapter ad;
+  protected TextView title;
+  protected MaterialDivider divar;
 
   public ItemRuner(Context context) {
     this.context = context;
     var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
-    TextView title = view.findViewById(R.id.title);
+    title = view.findViewById(R.id.title);
     listview = view.findViewById(R.id.listdata);
+    divar = view.findViewById(R.id.diver);
     listview.setScrollBarSize(0);
     listview.setDividerHeight(0);
     ad = new ListAdapter(list);
@@ -84,5 +88,32 @@ public class ItemRuner {
 
   public void setListview(ListView listview) {
     this.listview = listview;
+  }
+
+  public void setTextColors(int colors) {
+    ad.setTextColor(colors);
+  }
+
+  public void setColorFilter(int colors) {
+    ad.setColorFilter(colors);
+  }
+
+  public void setTitle(String str) {
+    title.setText(str);
+  }
+
+  public void setTitleColor(int color) {
+    title.setTextColor(color);
+  }
+
+  public void serDivarColor(int color) {
+    divar.setDividerColor(color);
+  }
+
+  public void serDivarColorFromRes(@IdRes int color) {
+    divar.setDividerColorResource(color);
+  }
+  public void setSheetBackground(int color){
+    dialog.getWindow().getDecorView().setBackgroundColor(color);
   }
 }
