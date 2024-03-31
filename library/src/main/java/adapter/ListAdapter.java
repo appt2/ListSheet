@@ -26,6 +26,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
   private int colorFilter = Color.WHITE;
   protected OnItemClickEvent ev;
   protected boolean isAnim = false;
+  protected boolean isLayout2 = false;
   
 
   public ListAdapter(List<SheetModel> model, OnItemClickEvent ev) {
@@ -35,10 +36,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
   @Override
   public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-    
-    View view =
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_adapter, parent, false);
-    
+      var  view = LayoutInflater.from(parent.getContext()).inflate(isLayout2 ? R.layout.layout_adapter2 : R.layout.layout_adapter, parent, false);
     return new VH(view);
   }
 
@@ -90,6 +88,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
   }
   public void setAnimatorItem(boolean is){
     this.isAnim = is;
+  }
+  public void setLayoutChange(boolean isLayout2){
+    this.isLayout2 = isLayout2;
   }
 
   static class VH extends RecyclerView.ViewHolder {

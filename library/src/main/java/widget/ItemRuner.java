@@ -4,9 +4,11 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.IdRes;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -26,19 +28,22 @@ public class ItemRuner {
   protected BottomSheetDialog dialog;
   protected SheetModel model;
   protected ListAdapter ad;
+  protected View view;
   protected TextView title;
+  private boolean isLayout2 = false;
   protected static String TAG = ItemRuner.class.getSimpleName();
   protected MaterialDivider divar;
 
   public ItemRuner(Context context) {
     this.context = context;
-    var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
+    view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
     title = view.findViewById(R.id.title);
     listview = view.findViewById(R.id.listdata);
     divar = view.findViewById(R.id.diver);
     listview.setItemAnimator(new CustomItemAnimator(context));
     dialog = new BottomSheetDialog(context);
     dialog.setContentView(view);
+    
   }
 
   public void setCancelable(boolean boll) {
@@ -69,13 +74,14 @@ public class ItemRuner {
 
   public void removed(int pos) {
     if (pos >= 0 && pos < list.size()) {
-        list.remove(pos);
-        Log.e("Item : " , String.valueOf(pos));
+      list.remove(pos);
+      Log.e("Item : ", String.valueOf(pos));
     } else {
-          Log.e(TAG, "Invalid position: " + pos);
-         throw new IndexOutOfBoundsException("Invalid position: " + pos);
+      Log.e(TAG, "Invalid position: " + pos);
+      throw new IndexOutOfBoundsException("Invalid position: " + pos);
     }
-}
+  }
+
   public void show() {
     dialog.show();
   }
@@ -128,5 +134,13 @@ public class ItemRuner {
   public void DataRefresh(int pos) {
     listview.setAdapter(ad);
     listview.getAdapter().notifyItemChanged(pos);
+  }
+
+  public void setLayoutChange(boolean is) {
+    if (ad != null) {
+      ad.setLayoutChange(is);
+      listview.setAdapter(ad);
+      listview.getAdapter().notifyDataSetChanged();
+    }
   }
 }
