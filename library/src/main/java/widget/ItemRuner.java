@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.IdRes;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.divider.MaterialDivider;
 import com.ninjacoder.listshset.library.R;
@@ -18,24 +20,21 @@ import java.util.List;
 public class ItemRuner {
   protected Context context;
 
-  protected ListView listview;
+  protected RecyclerView listview;
   protected List<SheetModel> list = new ArrayList<>();
   protected BottomSheetDialog dialog;
   protected SheetModel model;
   protected ListAdapter ad;
   protected TextView title;
   protected MaterialDivider divar;
-
   public ItemRuner(Context context) {
     this.context = context;
     var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
     title = view.findViewById(R.id.title);
     listview = view.findViewById(R.id.listdata);
     divar = view.findViewById(R.id.diver);
-    listview.setScrollBarSize(0);
-    listview.setDividerHeight(0);
-    ad = new ListAdapter(list);
-    listview.setAdapter(ad);
+    
+    
     dialog = new BottomSheetDialog(context);
     dialog.setContentView(view);
   }
@@ -49,13 +48,9 @@ public class ItemRuner {
   }
 
   public void setCallBack(OnItemClickEvent ev) {
-    if (ev != null) {
-      listview.setOnItemClickListener(
-          (adview, view, pos, lb) -> {
-            boolean items = list.get(pos).getIsItem();
-            if (items) ev.onClickItem(pos);
-          });
-    }
+    ad = new ListAdapter(list,ev);
+     listview.setAdapter(ad);
+    listview.setLayoutManager(new LinearLayoutManager(context));
   }
 
   public void addItem(String name, int icon, boolean bool) {
@@ -82,13 +77,6 @@ public class ItemRuner {
     dialog.setContentView(view);
   }
 
-  public ListView getListview() {
-    return this.listview;
-  }
-
-  public void setListview(ListView listview) {
-    this.listview = listview;
-  }
 
   public void setTextColors(int colors) {
     ad.setTextColor(colors);
@@ -113,7 +101,12 @@ public class ItemRuner {
   public void serDivarColorFromRes(@IdRes int color) {
     divar.setDividerColorResource(color);
   }
-  public void setSheetBackground(int color){
+
+  public void setSheetBackground(int color) {
     dialog.getWindow().getDecorView().setBackgroundColor(color);
+  }
+
+  public void setAnimator(boolean bo) {
+    ad.setAnimatorItem(bo);
   }
 }

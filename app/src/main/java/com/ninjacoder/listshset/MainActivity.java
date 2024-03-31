@@ -18,20 +18,24 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     ItemRuner runer = new ItemRuner(this);
-    	runer.addItem("Hello",R.drawable.ic_launcher_foreground);
-      runer.addItem("Hello",R.drawable.ic_launcher_foreground,false);
-    
-    runer.setCallBack((pos) ->{
-      runer.setDismiss();
-    });
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, true);
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
+    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
+
+    runer.setCallBack(
+        (pos) -> {
+        //  runer.setDismiss();
+        });
     runer.setTextColors(Color.CYAN);
     runer.setColorFilter(Color.CYAN);
     runer.serDivarColor(Color.BLUE);
     runer.setTitleColor(Color.CYAN);
     runer.setTitle("Hello");
+    runer.setAnimator(true);
     runer.setSheetBackground(Color.BLACK);
     runer.show();
-    
-    
   }
 }
