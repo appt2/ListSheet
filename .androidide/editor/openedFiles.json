@@ -1,17 +1,17 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/java/com/ninjacoder/listshset/MainActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/README.md",
       "selection": {
         "end": {
-          "column": 10,
-          "index": 1135,
-          "line": 29
+          "column": 0,
+          "index": 0,
+          "line": 0
         },
         "start": {
-          "column": 10,
-          "index": 1135,
-          "line": 29
+          "column": 0,
+          "index": 0,
+          "line": 0
         }
       }
     },
@@ -19,14 +19,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/java/widget/ItemRuner.java",
       "selection": {
         "end": {
-          "column": 34,
-          "index": 1061,
-          "line": 28
+          "column": 19,
+          "index": 2389,
+          "line": 74
         },
         "start": {
-          "column": 34,
-          "index": 1061,
-          "line": 28
+          "column": 19,
+          "index": 2389,
+          "line": 74
         }
       }
     },
@@ -34,44 +34,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/java/adapter/ListAdapter.java",
       "selection": {
         "end": {
-          "column": 65,
-          "index": 2026,
-          "line": 64
+          "column": 60,
+          "index": 2187,
+          "line": 68
         },
         "start": {
-          "column": 65,
-          "index": 2026,
-          "line": 64
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/res/layout/layout_sheet_main.xml",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        },
-        "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/res/layout/layout_adapter.xml",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        },
-        "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 60,
+          "index": 2187,
+          "line": 68
         }
       }
     }

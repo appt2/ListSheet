@@ -26,8 +26,16 @@ public class MainActivity extends AppCompatActivity {
     runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
 
     runer.setCallBack(
-        (pos) -> {
-        //  runer.setDismiss();
+        new OnItemClickEvent() {
+
+          @Override
+          public void onClickItem(int pos) {}
+
+          @Override
+          public void onLongItem(int pos) {
+            runer.removed(pos);
+            runer.DataRomved(pos);
+          }
         });
     runer.setTextColors(Color.CYAN);
     runer.setColorFilter(Color.CYAN);

@@ -64,7 +64,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
           ev.onClickItem(holder.getAdapterPosition());
             if(isAnim) AnimatorUtils.ClickAnimation(holder.root);
         } 
-          
+          holder.root.setOnLongClickListener(___ ->{
+            if(sheet.getIsItem()) {
+                ev.onClickItem(holder.getAdapterPosition());
+            	if(isAnim)
+                  ev.onLongItem(holder.getAdapterPosition());
+            }
+              return true;
+          });
       });
     }
   }

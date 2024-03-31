@@ -1,6 +1,7 @@
 package com.ninjacoder.listshset.library.widget;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
@@ -26,15 +27,16 @@ public class ItemRuner {
   protected SheetModel model;
   protected ListAdapter ad;
   protected TextView title;
+  protected static String TAG = ItemRuner.class.getSimpleName();
   protected MaterialDivider divar;
+
   public ItemRuner(Context context) {
     this.context = context;
     var view = LayoutInflater.from(context).inflate(R.layout.layout_sheet_main, null);
     title = view.findViewById(R.id.title);
     listview = view.findViewById(R.id.listdata);
     divar = view.findViewById(R.id.diver);
-    
-    
+    listview.setItemAnimator(new CustomItemAnimator(context));
     dialog = new BottomSheetDialog(context);
     dialog.setContentView(view);
   }
@@ -48,8 +50,8 @@ public class ItemRuner {
   }
 
   public void setCallBack(OnItemClickEvent ev) {
-    ad = new ListAdapter(list,ev);
-     listview.setAdapter(ad);
+    ad = new ListAdapter(list, ev);
+    listview.setAdapter(ad);
     listview.setLayoutManager(new LinearLayoutManager(context));
   }
 
@@ -65,6 +67,15 @@ public class ItemRuner {
     list.add(new SheetModel(name, 0, true));
   }
 
+  public void removed(int pos) {
+    if (pos >= 0 && pos < list.size()) {
+        list.remove(pos);
+        Log.e("Item : " , String.valueOf(pos));
+    } else {
+          Log.e(TAG, "Invalid position: " + pos);
+         throw new IndexOutOfBoundsException("Invalid position: " + pos);
+    }
+}
   public void show() {
     dialog.show();
   }
@@ -76,7 +87,6 @@ public class ItemRuner {
   public void setCustomView(View view) {
     dialog.setContentView(view);
   }
-
 
   public void setTextColors(int colors) {
     ad.setTextColor(colors);
@@ -108,5 +118,15 @@ public class ItemRuner {
 
   public void setAnimator(boolean bo) {
     ad.setAnimatorItem(bo);
+  }
+
+  public void DataRomved(int pos) {
+    listview.setAdapter(ad);
+    listview.getAdapter().notifyItemRemoved(pos);
+  }
+
+  public void DataRefresh(int pos) {
+    listview.setAdapter(ad);
+    listview.getAdapter().notifyItemChanged(pos);
   }
 }
