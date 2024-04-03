@@ -27,7 +27,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
   protected OnItemClickEvent ev;
   protected boolean isAnim = false;
   protected boolean isLayout2 = false;
-  
 
   public ListAdapter(List<SheetModel> model, OnItemClickEvent ev) {
     this.model = model;
@@ -36,14 +35,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
   @Override
   public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-      var  view = LayoutInflater.from(parent.getContext()).inflate(isLayout2 ? R.layout.layout_adapter2 : R.layout.layout_adapter, parent, false);
+    var view =
+        LayoutInflater.from(parent.getContext())
+            .inflate(isLayout2 ? R.layout.layout_adapter2 : R.layout.layout_adapter, parent, false);
     return new VH(view);
   }
 
   @Override
   public void onBindViewHolder(VH holder, int position) {
     SheetModel sheet = model.get(position);
-   
+
     if (sheet.getIcon() == 0) {
       holder.img.setVisibility(View.GONE);
     } else {
@@ -56,21 +57,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
     holder.root.setAlpha(sheet.getIsItem() ? 1f : 0.4f);
     holder.tv.setTextColor(colorText);
     holder.img.setColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
-    if(ev != null ) {
-    	holder.root.setOnClickListener(c ->{
-        if(sheet.getIsItem()){
-          ev.onClickItem(holder.getAdapterPosition());
-            if(isAnim) AnimatorUtils.ClickAnimation(holder.root);
-        } 
-          holder.root.setOnLongClickListener(___ ->{
-            if(sheet.getIsItem()) {
-                ev.onClickItem(holder.getAdapterPosition());
-            	if(isAnim)
-                  ev.onLongItem(holder.getAdapterPosition());
+    if (ev != null) {
+      holder.root.setOnClickListener(
+          c -> {
+            if (sheet.getIsItem()) {
+              ev.onClickItem(holder.getAdapterPosition());
+              if (isAnim) AnimatorUtils.ClickAnimation(holder.root);
             }
-              return true;
+            holder.root.setOnLongClickListener(
+                ___ -> {
+                  if (sheet.getIsItem()) {
+                    ev.onClickItem(holder.getAdapterPosition());
+                    if (isAnim) ev.onLongItem(holder.getAdapterPosition());
+                  }
+                  return true;
+                });
           });
-      });
     }
   }
 
@@ -86,12 +88,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
   public void setColorFilter(int colorFilter) {
     this.colorFilter = colorFilter;
   }
-  public void setAnimatorItem(boolean is){
+
+  public void setAnimatorItem(boolean is) {
     this.isAnim = is;
   }
-  public void setLayoutChange(boolean isLayout2){
+
+  public void setLayoutChange(boolean isLayout2) {
     this.isLayout2 = isLayout2;
   }
+
 
   static class VH extends RecyclerView.ViewHolder {
     private LinearLayout root;

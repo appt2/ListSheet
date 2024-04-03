@@ -33,8 +33,6 @@ publishing {
       groupId = 'com.ninjacoder.listshset.library'
       artifactId = 'ListSheet'
       version = '1.0.3'
-
-      from components.java
     }
   }
 }

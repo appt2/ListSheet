@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
           @Override
           public void onLongItem(int pos) {
             runer.removed(pos);
-            runer.DataRomved(pos);
+           runer.DataRomved(pos);
           }
         });
     runer.setTextColors(Color.CYAN);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     runer.setTitle("Hello");
     runer.setAnimator(true);
     runer.setSheetBackground(Color.BLACK);
-    runer.setLayoutChange(true);
+    runer.setLayoutChange(false);
     runer.show();
   }
 }
