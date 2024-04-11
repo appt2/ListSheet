@@ -1,0 +1,50 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/java/widget/ItemRuner.java",
+      "selection": {
+        "end": {
+          "column": 1,
+          "index": 4126,
+          "line": 149
+        },
+        "start": {
+          "column": 1,
+          "index": 4126,
+          "line": 149
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/java/com/ninjacoder/listshset/MainActivity.java",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/ListSheet/library/src/main/java/adapter/ListAdapter.java",
+      "selection": {
+        "end": {
+          "column": 35,
+          "index": 1792,
+          "line": 54
+        },
+        "start": {
+          "column": 35,
+          "index": 1792,
+          "line": 54
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/ListSheet/app/src/main/java/com/ninjacoder/listshset/MainActivity.java"
+}

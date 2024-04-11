@@ -7,15 +7,16 @@ public class SheetModel {
   @NonNull private String name;
   @NonNull private int icon;
   @NonNull private boolean isItem;
-  
-  
-  public SheetModel(){}
+  @NonNull protected String subs;
 
-  public SheetModel(String name, int icon, boolean isItem) {
+  public SheetModel(String name, String subs,int icon, boolean isItem ) {
     this.name = name;
     this.icon = icon;
     this.isItem = isItem;
+    this.subs = subs;
   }
+
+  public SheetModel() {}
 
   public String getName() {
     return this.name;
@@ -39,5 +40,13 @@ public class SheetModel {
 
   public void setIsItem(boolean isItem) {
     this.isItem = isItem;
+  }
+
+  public String getSubs() {
+    return this.subs;
+  }
+
+  public void setSubs(String subs) {
+    this.subs = subs;
   }
 }

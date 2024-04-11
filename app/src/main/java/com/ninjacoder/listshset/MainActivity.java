@@ -1,8 +1,6 @@
 package com.ninjacoder.listshset;
 
 import android.graphics.Color;
-import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.ninjacoder.listshset.library.adapter.ListAdapter;
@@ -18,21 +16,21 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     ItemRuner runer = new ItemRuner(this);
-    runer.addItem("Hello", R.drawable.ic_launcher_foreground);
-    runer.addItem("Hello", R.drawable.ic_launcher_foreground, false);
-    runer.addItem("Hello");
-
+    runer.addItem("Hello", "this sub",R.drawable.ic_launcher_foreground,true);
+    runer.addItem("Hello",android.R.drawable.checkbox_on_background,false);
     runer.setCallBack(
         new OnItemClickEvent() {
 
           @Override
-          public void onClickItem(int pos) {}
+          public void onClickItem(int pos) {
+            switch(pos){
+              case 0 -> runer.setIconFromRes(R.drawable.ic_launcher_background,true); 
+              
+            }
+          }
 
           @Override
-          public void onLongItem(int pos) {
-            runer.removed(pos);
-           runer.DataRomved(pos);
-          }
+          public void onLongItem(int pos) {}
         });
     runer.setTextColors(Color.CYAN);
     runer.setColorFilter(Color.CYAN);
@@ -42,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     runer.setAnimator(true);
     runer.setSheetBackground(Color.BLACK);
     runer.setLayoutChange(false);
+     runer.setSubShow(true);
+    runer.setShowIcon(true);
     runer.show();
   }
 }

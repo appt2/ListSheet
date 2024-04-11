@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import static android.view.View.GONE;
-import android.widget.Adapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.ninjacoder.listshset.library.R;
 import com.ninjacoder.listshset.library.interfaces.OnItemClickEvent;
 import com.ninjacoder.listshset.library.model.SheetModel;
@@ -27,6 +26,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
   protected OnItemClickEvent ev;
   protected boolean isAnim = false;
   protected boolean isLayout2 = false;
+  protected boolean isShowSub = false;
+  protected boolean isShowIcon = false;
+  protected boolean isuser = false;
+  protected int ic = 0;
 
   public ListAdapter(List<SheetModel> model, OnItemClickEvent ev) {
     this.model = model;
@@ -49,10 +52,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
       holder.img.setVisibility(View.GONE);
     } else {
       holder.img.setVisibility(View.VISIBLE);
-      holder.img.setImageResource(sheet.getIcon());
+      holder.img.setImageResource(!isuser ? sheet.getIcon() : ic);
     }
 
     holder.tv.setText(sheet.getName());
+    holder.sub.setText(sheet.getSubs());
 
     holder.root.setAlpha(sheet.getIsItem() ? 1f : 0.4f);
     holder.tv.setTextColor(colorText);
@@ -73,6 +77,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
                   return true;
                 });
           });
+      holder.sub.setVisibility(!isShowSub ? View.GONE : View.VISIBLE);
+      holder.img.setVisibility(!isShowIcon ? View.GONE : View.VISIBLE);
     }
   }
 
@@ -97,17 +103,30 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
     this.isLayout2 = isLayout2;
   }
 
+  public void showSub(boolean isSub) {
+    this.isShowSub = isSub;
+  }
+
+  public void showIcon(boolean isShow) {
+    this.isShowIcon = isShow;
+  }
+
+  public void setIconFromRes(int ic, boolean isuser) {
+    this.ic = ic;
+    this.isuser = isuser;
+  }
 
   static class VH extends RecyclerView.ViewHolder {
     private LinearLayout root;
     private ImageView img;
-    private TextView tv;
+    private TextView tv, sub;
 
     public VH(View itemView) {
       super(itemView);
       root = itemView.findViewById(R.id.root);
       img = itemView.findViewById(R.id.icon);
       tv = itemView.findViewById(R.id.name);
+      sub = itemView.findViewById(R.id.sub);
     }
   }
 }

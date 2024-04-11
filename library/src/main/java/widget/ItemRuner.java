@@ -4,14 +4,12 @@ import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.IdRes;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.divider.MaterialDivider;
 import com.ninjacoder.listshset.library.R;
 import com.ninjacoder.listshset.library.adapter.ListAdapter;
@@ -43,7 +41,6 @@ public class ItemRuner {
     listview.setItemAnimator(new CustomItemAnimator(context));
     dialog = new BottomSheetDialog(context);
     dialog.setContentView(view);
-    
   }
 
   public void setCancelable(boolean boll) {
@@ -60,16 +57,24 @@ public class ItemRuner {
     listview.setLayoutManager(new LinearLayoutManager(context));
   }
 
+  public void addItem(String name, String sub, int icon, boolean bool) {
+    list.add(new SheetModel(name, sub, icon, bool));
+    setSubShow(true);
+  }
+
   public void addItem(String name, int icon, boolean bool) {
-    list.add(new SheetModel(name, icon, bool));
+    list.add(new SheetModel(name, "", icon, bool));
+    setSubShow(false);
   }
 
   public void addItem(String name, int icon) {
-    list.add(new SheetModel(name, icon, true));
+    list.add(new SheetModel(name, "", icon, true));
+    setSubShow(false);
   }
 
   public void addItem(String name) {
-    list.add(new SheetModel(name, 0, true));
+    list.add(new SheetModel(name, "", 0, true));
+    setSubShow(false);
   }
 
   public void removed(int pos) {
@@ -141,6 +146,22 @@ public class ItemRuner {
       ad.setLayoutChange(is);
       listview.setAdapter(ad);
       listview.getAdapter().notifyDataSetChanged();
+    }
+  }
+
+  public void setSubShow(boolean is) {
+    if (ad != null) ad.showSub(is);
+  }
+
+  public void setShowIcon(boolean show) {
+    if (ad != null) {
+      ad.showIcon(show);
+    }
+  }
+
+  public void setIconFromRes(int ic, boolean isuser) {
+    if (ad != null) {
+      ad.setIconFromRes(ic, isuser);
     }
   }
 }
